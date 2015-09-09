@@ -1,4 +1,4 @@
-package com.android.demo.ui;
+package com.android.demo.ui.activity.demo;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;

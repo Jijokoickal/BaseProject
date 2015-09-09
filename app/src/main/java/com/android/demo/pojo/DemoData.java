@@ -20,7 +20,6 @@ public class DemoData {
         this.name = name;
     }
 
-
     public int getId() {
         return id;
     }

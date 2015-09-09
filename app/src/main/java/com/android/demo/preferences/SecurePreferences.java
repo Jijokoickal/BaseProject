@@ -15,15 +15,11 @@ import javax.crypto.Cipher;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 
+
+/**
+ * This is for creating the secure preference for the application.
+ */
 public class SecurePreferences {
-
-    public static class SecurePreferencesException extends RuntimeException {
-
-        public SecurePreferencesException(Throwable e) {
-            super(e);
-        }
-
-    }
 
     private static final String TRANSFORMATION = "AES/CBC/PKCS5Padding";
     private static final String KEY_TRANSFORMATION = "AES/ECB/PKCS5Padding";
@@ -35,6 +31,17 @@ public class SecurePreferences {
     private final Cipher reader;
     private final Cipher keyWriter;
     private final SharedPreferences preferences;
+
+    /**
+     * Constructor for the class SecurePreferences
+     */
+    public static class SecurePreferencesException extends RuntimeException {
+        public SecurePreferencesException(Throwable e) {
+            super(e);
+        }
+
+    }
+
 
     /**
      * This will initialize an instance of the SecurePreferences class
@@ -68,7 +75,7 @@ public class SecurePreferences {
 
     protected void initCiphers(String secureKey) throws UnsupportedEncodingException, NoSuchAlgorithmException, InvalidKeyException,
             InvalidAlgorithmParameterException {
-        
+
         IvParameterSpec ivSpec = getIv();
         SecretKeySpec secretKey = getSecretKey(secureKey);
 

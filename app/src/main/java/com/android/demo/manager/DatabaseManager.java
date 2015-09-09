@@ -11,7 +11,6 @@ import net.sqlcipher.database.SQLiteOpenHelper;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
- * Copyright (C) 2015 Abbvie. All rights reserved.
  * Thread safe db manager class for opening and closing the database
  */
 public class DatabaseManager {

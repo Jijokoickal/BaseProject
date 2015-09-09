@@ -11,7 +11,7 @@ import com.android.demo.R;
 import com.android.demo.ui.fragments.base.AbstractBaseFragment;
 
 /**
- * Created by 321930 on 8/20/2015.
+ *
  */
 public class AbstractBaseActivity extends FragmentActivity {
 
@@ -34,6 +34,8 @@ public class AbstractBaseActivity extends FragmentActivity {
                 if (fragment != null) {
                     mCurrFragment = fragment;
                 }
+            } else {
+                finish();
             }
         }
 
@@ -52,7 +54,7 @@ public class AbstractBaseActivity extends FragmentActivity {
      * @param fragment
      * @param addToBackStack
      */
-    protected void addFragment(final Fragment fragment, final boolean addToBackStack) {
+    public void addFragment(final Fragment fragment, final boolean addToBackStack) {
 
         FragmentTransaction mFragmentTransaction = getSupportFragmentManager().beginTransaction();
         getSupportFragmentManager().addOnBackStackChangedListener(onBackStackChangedListener);
@@ -69,12 +71,12 @@ public class AbstractBaseActivity extends FragmentActivity {
                 R.anim.exit_to_right);
 
         if (mPrevFragment != null) {
-            mFragmentTransaction.replace(R.id.frame_id, fragment, fragment.getClass().getName());
+            mFragmentTransaction.replace(R.id.fragmentContainer, fragment, fragment.getClass().getName());
         } else {
-            mFragmentTransaction.add(R.id.frame_id, fragment, fragment.getClass().getName());
+            mFragmentTransaction.add(R.id.fragmentContainer, fragment, fragment.getClass().getName());
         }
 
-        mFragmentTransaction.remove(fragment);
+//        mFragmentTransaction.remove(fragment);
 
         if (addToBackStack) {
             mFragmentTransaction.addToBackStack(fragment.getClass().getName());

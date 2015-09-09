@@ -4,14 +4,13 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.android.demo.ui.activity.base.AbstractBaseActivity;
+
 /**
- * Created by 321930 on 8/20/2015.
  */
 public class AbstractBaseFragment extends Fragment {
 
@@ -78,5 +77,9 @@ public class AbstractBaseFragment extends Fragment {
     @Override
     public void onDetach() {
         super.onDetach();
+    }
+
+    protected void addFragment(Fragment fragment, boolean isAddToBackStack) {
+        ((AbstractBaseActivity) getActivity()).addFragment(fragment, true);
     }
 }
